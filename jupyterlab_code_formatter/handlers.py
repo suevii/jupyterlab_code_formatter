@@ -86,6 +86,22 @@ class FormattersAPIHandler(APIHandler):
 
 
 class FormatAPIHandler(APIHandler):
+    """
+    request:
+    {
+        "code":[
+            "var.1=c(0,1,2,3)          \nprint(var.1)"
+        ],
+        "notebook":true,
+        "formatter":"formatR",
+        "options":{
+            "indent":2,
+            "arrow":true,
+            "wrap":true,
+            "width_cutoff":150
+        }
+    }
+    """
     def post(self) -> None:
         if check_plugin_version(self):
             data = json.loads(self.request.body.decode("utf-8"))
